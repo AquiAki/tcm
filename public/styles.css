@@ -22,3 +22,7 @@ footer {
 footer p {
   color: #ccc;
 }
+
+.about {
+    padding: 100px;
+}

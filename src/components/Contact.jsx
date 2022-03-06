@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { Provider, useDispatch } from "react-redux";
-import {push} from "connected-react-router";
+import { push } from "connected-react-router";
 
 
 const useStyles = makeStyles(() =>
@@ -20,26 +20,21 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const About = (props) => {
+const Contact = (props) => {
   const classes = useStyles();
   // const dispatch = useDispatch();
 
-
-
-
   return (
     <div className="about">
-      <h1>このサイトについて</h1>
+      <h1>コンタクト</h1>
       <p>
-        こんにちは。このサイトは鍼灸の学生や鍼灸師に向けて作ったサイトです。
+        コンタクトフォームはこちら
       </p>
-        <Button className={classes.button} >
-          ホームに戻る
-        </Button>
-      
+      <Button className={classes.button}>ホームに戻る</Button>
+
       {/* <Button onClick={() => dispatch(push("/"))}>ホームに戻る</Button> */}
     </div>
   );
 };
 
-export default About;
+export default Contact;
