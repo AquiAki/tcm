@@ -1,23 +1,25 @@
 import React, {useEffect, useState} from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
 import {
   Header,
   Footer,
   Cards,
-  Card,
-  List,
   Lists,
   About,
+  Contact,
 } from "./index";
 import defaultDataset from "../dataset";
-import { Button } from '@material-ui/core';
+
 
 function App() {
 
 const [currentId, setCurrentId] = useState("init");
 const [initDatas, setInitDatas] = useState(defaultDataset[currentId]);
 const [isOpen, setIsOpen] = useState(true);
-const [isAbout, setIsAbout] = useState(false);
 
 function checkId(i){
   if(/^list_*/.test(i)){
@@ -30,32 +32,52 @@ function checkId(i){
   
 }
 
-function changeByHeader(text){
-  if (text === "Home") {
-    setInitDatas(defaultDataset["init"]);
-    setIsOpen(true);
-  }else{
-    setIsAbout(true);
-    setIsOpen(false);
-  }
-}
-
 useEffect(()=>{
   setInitDatas(defaultDataset[currentId]);
 },[currentId])
 
+const [openAbout, setOpenAbout] = useState(false);
+const [openContact, setOpenContact] = useState(false);
+
+function getId(text){
+  if (text === "About") {
+    setOpenAbout(true);
+    setOpenContact(false);
+  } else if (text === "Contact") {
+    setOpenContact(true);
+    setOpenAbout(false);
+  }else{
+    setOpenAbout(false);
+    setOpenContact(false);
+  }
+}
+
 return (
   <div>
-    {/* <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={Header} />
-        <Redirect to="/" />
-      </Switch>
-    </BrowserRouter> */}
-    <Header changeScreen={changeByHeader} />
+    <div>
+      <Header getText={getId} />
+    </div>
+    <BrowserRouter>
+      <div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              isOpen ? (
+                <Cards initData={initDatas} change={checkId} />
+              ) : (
+                <Lists initData={initDatas} />
+              )
+            }
+          ></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
 
-    {isOpen ? <Cards initData={initDatas} change={checkId} /> : <Lists initData={initDatas} />}
-    {isAbout && <About />}
+    {openAbout && <About />}
+    {openContact && <Contact />}
 
     <Footer />
   </div>

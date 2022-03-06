@@ -1,67 +1,4 @@
-// // import React from "react";
-// // // import HighlightIcon from "@material-ui/icons/Highlight";
-
-// // function Header() {
-// //   return (
-// //     <header>
-// //       <h1>
-// //         Next鍼灸
-// //       </h1>
-// //     </header>
-// //   );
-// // }
-
-// // export default Header;
-
-
-// import React from "react";
-// import { makeStyles } from "@material-ui/core/styles";
-// import AppBar from "@material-ui/core/AppBar";
-// import Toolbar from "@material-ui/core/Toolbar";
-// import Typography from "@material-ui/core/Typography";
-// import Button from "@material-ui/core/Button";
-// import IconButton from "@material-ui/core/IconButton";
-// import MenuIcon from "@material-ui/icons/Menu";
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   menuButton: {
-//     marginRight: theme.spacing(2),
-//   },
-//   title: {
-//     flexGrow: 1,
-//   },
-// }));
-
-// export default function Header() {
-//   const classes = useStyles();
-//   return (
-//     <div className={classes.root}>
-//       <AppBar position="static">
-//         <Toolbar>
-//           <IconButton
-//             edge="start"
-//             className={classes.menuButton}
-//             color="inherit"
-//             aria-label="menu"
-//           >
-//             <MenuIcon />
-//           </IconButton>
-//           <Typography variant="h6" className={classes.title}>
-//             Next 鍼灸
-//           </Typography>
-//           <Button color="inherit">Login</Button>
-//         </Toolbar>
-//       </AppBar>
-//     </div>
-//   );
-// }
-
-
-import * as React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { styled, alpha, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
@@ -78,20 +15,14 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import MuiAppBar from "@material-ui/core/AppBar";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import MailIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 
 import HomeIcon from "@material-ui/icons/Home";
 import InfoIcon from "@material-ui/icons/Info";
-import CheckIcon from "@material-ui/icons/Check";
-
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 
 const drawerWidth = 240;
 
@@ -105,7 +36,7 @@ const Search = styled("div")(({ theme }) => ({
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(50),
     width: "auto",
   },
 }));
@@ -137,8 +68,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-
-
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
     flexGrow: 1,
@@ -157,7 +86,6 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
     }),
   })
 );
-
 
 const AppBars = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -200,8 +128,8 @@ const handleDrawerClose = () => {
   setOpen(false);
 };
 
-function getText(text){
-  props.changeScreen(text)
+function button_click(text) {
+    props.getText(text);
 }
 
   return (
@@ -258,8 +186,14 @@ function getText(text){
         </DrawerHeader>
         <Divider />
         <List>
-          {["Home", "About"].map((text, index) => (
-            <ListItem button key={text} onClick={()=>getText(text)}>
+          {["Home", "About", "Contact"].map((text, index) => (
+            <ListItem
+              button
+              id="searchLink"
+              key={text}
+              onClick={() => button_click(text)}
+              to="/"
+            >
               <ListItemIcon>
                 {index % 2 === 0 ? <HomeIcon /> : <InfoIcon />}
               </ListItemIcon>
@@ -268,54 +202,13 @@ function getText(text){
           ))}
         </List>
         <Divider />
-
-        {/* <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
       </Drawer>
 
       <Main open={open}>
         <DrawerHeader />
       </Main>
     </Box>
+
+
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-// <AppBar position="static">
-//   <Toolbar>
-//     <IconButton
-//       size="large"
-//       edge="start"
-//       color="inherit"
-//       aria-label="open drawer"
-//       sx={{ mr: 2 }}
-//     >
-//       <MenuIcon />
-//     </IconButton>
-//     {/* <Typography
-//             variant="h6"
-//             noWrap
-//             component="div"
-//             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-//           >
-//             Next鍼灸
-//           </Typography> */}
-//   </Toolbar>
-// </AppBar>;
