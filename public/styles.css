@@ -1,6 +1,6 @@
 header {
   background-color: black;
-  margin: auto -16px;
+  margin: auto;
   padding: 16px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
@@ -12,17 +12,73 @@ header h1 {
 }
 
 footer {
-  position: absolute;
+  /* position: absolute; */
   text-align: center;
-  bottom: 0;
+  /* bottom: 0;
   width: 100%;
-  height: 2.5rem;
+  height: 2.5rem; */
 }
 
 footer p {
   color: #ccc;
 }
 
+.wholeBody{
+     padding: 100px;
+}
+
 .about {
     padding: 100px;
+}
+
+.home{
+    padding-top: 100px;
+}
+
+.lung{
+    padding-top: 200px;
+}
+
+/* ホーム */
+.home-image{
+    border: 2px #81c4fa solid;;
+}
+
+/* ここからはコンタクトフォーム */
+.container{
+  display: grid;
+  row-gap: 30px;
+  width: 84%;
+  max-width: 640px;
+  margin: 60px auto;
+}
+form {
+  display: grid;
+  row-gap: 30px;
+}
+
+input,textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: solid 1px #ddd;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  appearance: none;
+  border-radius: 0;
+  resize: none;
+}
+
+.contact-button {
+  justify-self: start;
+  border: none;
+  background-color: #0d6efd;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.contact-button:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
