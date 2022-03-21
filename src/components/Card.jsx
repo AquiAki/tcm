@@ -45,12 +45,14 @@ const Card = (props) => {
       )}
       {!open && (
         <div>
+          <p>ツボ　：　{props.content}</p>
           <img src={url} alt={props.content} />
-          <p>{props.content}</p>
-          <p>{props.place}</p>
+
+          <p>場所　：　{props.place}</p>
           <p>{props.point}</p>
-          <p>{props.muscle}</p>
-          <p>{props.nerve}</p>
+          <p>筋肉　：　{props.muscle}</p>
+          <p>神経　：　{props.nerve}</p>
+
         </div>
       )}
     </div>

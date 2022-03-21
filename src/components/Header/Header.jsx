@@ -36,7 +36,7 @@ const useStyles = makeStyles(() =>
 
 
 
-export default function Header() {
+export default function Header(props) {
 
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -58,6 +58,13 @@ export default function Header() {
     [setOpen, open]
   );
 
+  function checkSearch(i, searchWord) {
+    props.searchToRouter(i, searchWord);
+  }
+
+  // function checkKey(searchWord){
+  //   console.log(searchWord);
+  // }
 
 
   return (
@@ -75,7 +82,7 @@ export default function Header() {
             <HeaderMenu handleDrawerToggle={handleDrawerToggle} />
           </div>
         </Toolbar>
-        <ClosableDrawer open={open} onClose={handleDrawerToggle} />
+        <ClosableDrawer open={open} onClose={handleDrawerToggle} searchInput={checkSearch} />
       </AppBar>
     </div>
   );

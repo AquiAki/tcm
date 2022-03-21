@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { Card } from "./index";
 import { useNavigate } from "react-router-dom";
-import { Lung } from "./index";
+import { Lung, Cards } from "./index";
 import lung from "/Users/akii/Desktop/tcm/src/assets/肺経.jpg";
 import largeIntestine from "/Users/akii/Desktop/tcm/src/assets/大腸.jpg";
 import stomach from "/Users/akii/Desktop/tcm/src/assets/胃経.jpg";
@@ -104,7 +104,7 @@ const useStyles = makeStyles(() =>
 const Acupoints = (props) => {
   const classes = useStyles();
   const navigate = useNavigate();
-  var title = "";
+  const [acuName, setAcName] = useState("")
   const [open, setOpen] = useState(false);
 
   // const images = [
@@ -126,12 +126,14 @@ const Acupoints = (props) => {
   // ];
 
   function checkComponent(i) {
-    setOpen(true)
+    // setOpen(true)
     
     switch (i) {
       case "lung":
+        
         navigate("/lung");
-        title="lung"
+        setAcName("lung")
+
         break;
       case "largeIntestine":
         navigate("/largeintestine");
@@ -180,13 +182,15 @@ const Acupoints = (props) => {
     
   }
 
-  // useEffect(() => {
-  //   console.log("use");
-  // }, [title]);
+  useEffect(() => {
+    setAcName("lung");
+
+  }, [acuName]);
 
 
   return (
     <div className="home">
+    {/* {!open && <Lung acName={acuName} />} */}
       <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
         {itemData.map((item, index) => (
           <ImageListItem key={item.img}>
@@ -203,6 +207,7 @@ const Acupoints = (props) => {
         ))}
       </ImageList>
 
+      {/* {open && <Lung title={title} />} */}
 
       {/* {images.map((image, index) => (
         <button
