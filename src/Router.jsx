@@ -10,6 +10,7 @@ import {
   Header,
   Footer,
   Cards,
+  Card,
   Lists,
   About,
   Contact,
@@ -21,7 +22,8 @@ import {
   Theory,
   LargeIntestine,
   Stomach,
-  
+  Popup,
+
 } from "./components/index";
 
 import defaultDataset from "./dataset";
@@ -35,6 +37,9 @@ const Router = () => {
   const [openHome, setOpenHome] = useState(false);
   const [openAbout, setOpenAbout] = useState(false);
   const [openContact, setOpenContact] = useState(false);
+  const [openSearch, setOpenSearch] = useState(false);
+
+  const [searchText, setSearchText] = useState("");
 
   function checkId(i) {
     if (/^list_*/.test(i)) {
@@ -48,11 +53,19 @@ const Router = () => {
     }
   }
 
+  function checkSearch(i, searchWord) {
+
+    setOpenSearch(i);
+    setSearchText(searchWord);
+  }
+
   return (
     <div>
       <BrowserRouter>
         <div>
-          <Header />
+          <Header searchToRouter={checkSearch} />
+
+          {!openSearch && <Popup />}
 
           {/* 
           <ul>
@@ -92,12 +105,31 @@ const Router = () => {
             <Route exact path="/tcm" element={<Tcm />}></Route>
             <Route exact path="/theory" element={<Theory />}></Route>
             <Route exact path="/lung" element={<Lung />}></Route>
-            <Route exact path="/largeintestine" element={<LargeIntestine />}></Route>
+            <Route
+              exact
+              path="/largeintestine"
+              element={<LargeIntestine />}
+            ></Route>
             <Route exact path="/stomach" element={<Stomach />}></Route>
             <Route exact path="*" element={<Page404 />}></Route>
+            <Route
+              exact
+              path="/search"
+              element={
+                <Popup
+                  image={searchText.image}
+                  content={searchText.content}
+                  place={searchText.place}
+                  point={searchText.point}
+                  muscle={searchText.muscle}
+                  nerve={searchText.nerve}
+                />
+              }
+            ></Route>
           </Routes>
         </div>
       </BrowserRouter>
+
       <Footer />
     </div>
   );

@@ -14,3 +14,4 @@ export { default as Tcm } from "./Tcm";
 export { default as Theory } from "./Theory";
 export { default as LargeIntestine } from "./LargeIntestine";
 export { default as Stomach } from "./Stomach";
+export { default as Popup } from "./Popup";

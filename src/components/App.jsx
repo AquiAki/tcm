@@ -53,16 +53,17 @@ const [openHome, setOpenHome] = useState(false);
 const [openAbout, setOpenAbout] = useState(false);
 const [openContact, setOpenContact] = useState(false);
 
-function checkId(i){
-  if(/^list_*/.test(i)){
-    console.log(`idにlist_が入っている場合：${i}`);
-    setCurrentId(i);
-    setIsOpen(false);
-    setOpenLists(true);
-  }else{
+function checkId(event){
+  console.log(event.target.value);
+  // if(/^list_*/.test(i)){
+  //   console.log(`idにlist_が入っている場合：${i}`);
+  //   setCurrentId(i);
+  //   setIsOpen(false);
+  //   setOpenLists(true);
+  // }else{
     
-    setCurrentId(i);
-  }
+  //   setCurrentId(i);
+  // }
 }
 
 function getId(text) {
@@ -104,9 +105,8 @@ useEffect(()=>{
 
 return (
   <div className="wholeBody">
-
     <Router />
-
+    
   </div>
 );
 }

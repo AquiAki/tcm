@@ -42,7 +42,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h1>Something went wrongだよ.</h1>;
+      return <h1>Something went wrong.</h1>;
     }
     return this.props.children;
   }
@@ -61,19 +61,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-
-
-
-// import React from "react";
-// import ReactDOM from "react-dom";
-// import App from "./components/App";
-// import { Provider } from "react-redux";
-// import store from "./components/reducks/store/store";
-
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <App />
-//   </Provider>,
-//   document.getElementById("root")
-// );
-

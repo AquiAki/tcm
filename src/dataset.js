@@ -3,7 +3,7 @@ const defaultDataset = {
     { content: "経絡経穴概論", nextId: "acu_points" },
     { content: "東洋医学概論", nextId: "tcm" },
     { content: "はり理論及び東洋医学臨床論", nextId: "theory" },
-    { content: "解剖学", nextId: "anatomy" },
+    // { content: "解剖学", nextId: "anatomy" },
   ],
   acu_points: [
     { content: "手の太陰肺経", nextId: "lung" },
@@ -100,6 +100,108 @@ const defaultDataset = {
       nextId: "syousyou",
     },
   ],
+
+  ちゅうふ: {
+    image: "心",
+    content: "中府（ちゅうふ）",
+    place: "雲門穴の下1寸、華蓋穴の外方6寸",
+    point: "肺経の募穴",
+    muscle: "大胸筋、小胸筋",
+    nerve: "運動神経 : 胸筋神経",
+    // gen: false,
+    // geki: false,
+    // raku: false,
+    // bo: true,
+  },
+
+  うんもん: {
+    content: "雲門（うんもん）",
+    place: "鎖骨下窩にあり、烏口突起の内縁、腋窩動脈拍動部",
+    point: "",
+    muscle: "三角筋と大胸筋の間",
+    nerve: "胸筋神経、腋窩神経",
+  },
+
+  てんぷ: {
+    content: "天府（てんぷ）",
+    gen: false,
+    geki: false,
+    raku: false,
+    bo: false,
+    nextId: "tenpu",
+  },
+
+  きょうはく: {
+    content: "俠白（きょうはく)",
+    gen: false,
+    geki: false,
+    raku: false,
+    bo: false,
+    nextId: "kyohaku",
+  },
+
+  しゃくたく: {
+    content: "尺沢（しゃくたく）",
+    gen: false,
+    geki: false,
+    raku: false,
+    bo: false,
+    nextId: "syakutaku",
+  },
+
+  こうさい: {
+    content: "孔最（こうさい）",
+    gen: false,
+    geki: true,
+    raku: false,
+    bo: false,
+    nextId: "kousai",
+  },
+
+  れっけつ: {
+    content: "列缺（れっけつ）",
+    gen: false,
+    geki: false,
+    raku: true,
+    bo: false,
+    nextId: "rekketu",
+  },
+
+  けいきょ: {
+    content: "経渠（けいきょ）",
+    gen: false,
+    geki: false,
+    raku: false,
+    bo: false,
+    nextId: "keikyo",
+  },
+
+  たいえん: {
+    content: "太淵（たいえん)",
+    gen: true,
+    geki: false,
+    raku: false,
+    bo: false,
+    nextId: "taien",
+  },
+
+  ぎょさい: {
+    content: "魚際（ぎょさい）",
+    gen: false,
+    geki: false,
+    raku: false,
+    bo: false,
+    nextId: "gyosai",
+  },
+
+  しょうしょう: {
+    content: "少商（しょうしょう)",
+    gen: false,
+    geki: false,
+    bo: false,
+    nextId: "syousyou",
+  },
+
   largeIntestine: [
     { content: "商陽(しょうよう)", nextId: "list_chufu" },
     { content: "雲門（うんもん）", nextId: "list_unmon" },
@@ -161,13 +263,24 @@ const defaultDataset = {
     { content: "老年医学における鍼灸療法", nextId: "old" },
   ],
 
-  anatomy: [
-    { content: "人体の構成", nextId: "human" },
-    { content: "循環器系", nextId: "cardiovascular" },
-    { content: "呼吸器系", nextId: "respiratory" },
-    { content: "消化器系", nextId: "digestive" },
-  ],
+  // anatomy: [
+  //   { content: "人体の構成", nextId: "human" },
+  //   { content: "循環器系", nextId: "cardiovascular" },
+  //   { content: "呼吸器系", nextId: "respiratory" },
+  //   { content: "消化器系", nextId: "digestive" },
+  // ],
 };
 
 
 export default defaultDataset;
+
+
+
+
+
+
+
+
+
+
+

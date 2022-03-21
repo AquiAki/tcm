@@ -1,4 +1,4 @@
-import React, {useCallback, useState, useE} from 'react';
+import React, {useCallback, useState, useEffect} from 'react';
 import { Provider } from "react-redux";
 import { Divider } from '@material-ui/core';
 import { Drawer } from '@material-ui/core';
@@ -16,6 +16,8 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import HomeIcon from "@material-ui/icons/Home";
 import { useDispatch } from "react-redux";
 import { push } from 'connected-react-router';
+import data from "/Users/akii/Desktop/tcm/src/dataset.js";
+import { Popup } from "/Users/akii/Desktop/tcm/src/components/index.js";
 
 import {
   NavLink,
@@ -55,11 +57,27 @@ const ClosableDrawer = (props) =>{
   const dispatch = useDispatch();
   const [path, setPath] = useState("");
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false)
+
+  const [searchWord, setSearchWord] = useState("")
 
   const [keyword, setKeyword] = useState("");
-  const inputKeyword = useCallback((event)=>{
-    setKeyword(event.target.value)
+
+
+  const inputKeyword = useCallback((event)=>{ 
+    setKeyword(event.target.value) 
   },[setKeyword]);
+
+  
+  const click = (event)=>{
+    setIsOpen(true);
+
+    const new_search = data[keyword];
+    setSearchWord(new_search);
+    navigate("/search");
+    props.onClose(event);
+    props.searchInput(true, searchWord);
+  }
 
 
   const selectMenu = (event, path) => {
@@ -141,38 +159,43 @@ const ClosableDrawer = (props) =>{
     //   value: "/contact",
     // },
   ];
-  
+
+useEffect(() => {
+  props.searchInput(true, searchWord);
+}, [isOpen, searchWord]);
+
 
   return (
-    <nav className={classes.drawer}>
-      <Drawer
-        container={container}
-        variant="temporary"
-        anchor="right"
-        open={props.open}
-        onClose={(e) => props.onClose(e)}
-        classes={{ paper: classes.drawerPaper }}
-        ModalProps={{ keepMounted: true }}
-      >
-        <div>
-          <div className={classes.searchField}>
-            <TextInput
-              fullWidth={false}
-              label={"キーワードを入力"}
-              multiline={false}
-              onChange={inputKeyword}
-              required={false}
-              rows={1}
-              value={keyword}
-              type={"text"}
-            />
-            <IconButton>
-              <Search />
-            </IconButton>
-          </div>
-          <Divider />
+    <div>
+      <nav className={classes.drawer}>
+        <Drawer
+          container={container}
+          variant="temporary"
+          anchor="right"
+          open={props.open}
+          onClose={(e) => props.onClose(e)}
+          classes={{ paper: classes.drawerPaper }}
+          ModalProps={{ keepMounted: true }}
+        >
+          <div>
+            <div className={classes.searchField}>
+              <TextInput
+                fullWidth={false}
+                label={"ひらがなで検索"}
+                multiline={false}
+                onChange={inputKeyword}
+                required={false}
+                rows={1}
+                value={keyword}
+                type={"text"}
+              />
+              <IconButton onClick={click}>
+                <Search />
+              </IconButton>
+            </div>
+            <Divider />
 
-          {/* <div>
+            {/* <div>
             <ul>
               <li>
                 <NavLink to="/" onClick={(e) => props.onClose(e)}>
@@ -192,32 +215,29 @@ const ClosableDrawer = (props) =>{
             </ul>
           </div> */}
 
-          
-          <List>
-            {menus.map((menu) => (
-              <ListItem
-                button
-                key={menu.id}
-                onClick={(e) => menu.func(e, menu.value)}
-              >
-                <ListItemIcon>{menu.icon}</ListItemIcon>
-                <ListItemText primary={menu.label} />
-              </ListItem>
-            ))}
-{/* 
+            <List>
+              {menus.map((menu) => (
+                <ListItem
+                  button
+                  key={menu.id}
+                  onClick={(e) => menu.func(e, menu.value)}
+                >
+                  <ListItemIcon>{menu.icon}</ListItemIcon>
+                  <ListItemText primary={menu.label} />
+                </ListItem>
+              ))}
+              {/* 
             <ListItem button key="logout" onClick={() => getText()}>
               <ListItemIcon>
                 <FiberManualRecordIcon />
               </ListItemIcon>
               <ListItemText primary={"経穴"} />
             </ListItem> */}
-          </List>
-
-
-        </div>
-
-      </Drawer>
-    </nav>
+            </List>
+          </div>
+        </Drawer>
+      </nav>
+    </div>
   );
 };
 

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
-import { Card } from "./index";
+import { Card, Cards } from "./index";
 import {  useNavigate } from "react-router-dom";
 import {Lung} from "./index"
 import acupoints  from "/Users/akii/Desktop/tcm/src/assets/経絡経穴.jpg";
 import yinyang from "/Users/akii/Desktop/tcm/src/assets/東洋医学.jpg";
 import theory from "/Users/akii/Desktop/tcm/src/assets/理論と臨床.jpg";
-
+import defaultDataset from "../dataset";
 
 import ImageList from "@material-ui/core/ImageList";
 import ImageListItem from "@material-ui/core/ImageListItem";
@@ -51,6 +51,9 @@ const useStyles = makeStyles(() =>
 const Home = (props) => {
   const classes = useStyles();
   const navigate = useNavigate();
+
+  const [currentId, setCurrentId] = useState("init");
+  const [initDatas, setInitDatas] = useState(defaultDataset[currentId]);
 
   // const images = [
   //   {
@@ -97,6 +100,8 @@ const Home = (props) => {
             <img src={image.image} key={index} alt={""} />
           </button>
         ))} */}
+
+        {/* <Cards initData={initDatas} /> */}
 
         <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
           {itemData.map((item) => (
