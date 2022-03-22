@@ -1,9 +1,7 @@
-import react, { useState } from "react";
+import react from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
-
-
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -23,47 +21,21 @@ const useStyles = makeStyles(() =>
 const Card = (props) => {
   const classes = useStyles();
   
-  const [open, setOpen] = useState(true)
 
   function changeId() {
     props.change(props.id);
-    setOpen(false);
   }
-
-  const url = props.image;
 
   return (
     <div>
-      {open && (
-        <Button
-          className={classes.button}
-          variant="outlined"
-          onClick={changeId}
-        >
-          {props.text}
-        </Button>
-      )}
-      {!open && (
-        <div>
-          <p>ツボ　：　{props.content}</p>
-          <img src={url} alt={props.content} />
 
-          <p>場所　：　{props.place}</p>
-          <p>{props.point}</p>
-          <p>筋肉　：　{props.muscle}</p>
-          <p>神経　：　{props.nerve}</p>
+        {props.content}
+        {props.muscle}
+        {props.nerve}
+        {props.content}
 
-        </div>
-      )}
     </div>
   );
 };
 
 export default Card;
-
-
-
-  
-
-
-

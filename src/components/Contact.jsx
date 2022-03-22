@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
-import { Provider, useDispatch } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import { push } from "connected-react-router";
 import { useNavigate } from "react-router-dom";
 
@@ -25,20 +25,10 @@ const Contact = (props) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
-  function goBackHome(){
-    navigate("/");
-  }
+
+
 
   return (
-    // <div className="about">
-    //   <h1>コンタクト</h1>
-    //   <p>
-    //     コンタクトフォームはこちら
-    //   </p>
-    //   <Button className={classes.button} onClick={goBackHome}>ホームに戻る</Button>
-
-    //   {/* <Button onClick={() => dispatch(push("/"))}>ホームに戻る</Button> */}
-    // </div>
     <div className="container">
       <h1>お問い合わせ</h1>
       <form
@@ -57,7 +47,9 @@ const Contact = (props) => {
           <label htmlFor="content">お問い合わせ内容</label>
           <textarea name="content" type="text" rows="10" required></textarea>
         </div>
-        <button className="contact-button" type="submit">送信する</button>
+        <button className="contact-button" type="submit">
+          送信する
+        </button>
       </form>
     </div>
   );

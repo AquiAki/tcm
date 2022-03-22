@@ -4,19 +4,6 @@ import { Provider } from "react-redux";
 import createStore from "./components/reducks/store/store";
 import App from "./components/App";
 import * as History from "history";
-import { ConnectedRouter } from "connected-react-router";
-import {
-  Header,
-  Footer,
-  Cards,
-  Lists,
-  About,
-  Contact,
-  Page404,
-} from "./components/index";
-
-import { MuiThemeProvider } from "@material-ui/core";
-import { theme } from "./assets/theme";
 
 
 const history = History.createBrowserHistory();
@@ -61,3 +48,6 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
+
+
+
