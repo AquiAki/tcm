@@ -1,10 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
-import { Provider, useDispatch } from "react-redux";
-import {push} from "connected-react-router";
 import { useNavigate } from "react-router-dom";
-import { connect } from "react-redux";
 
 
 const useStyles = makeStyles(() =>
@@ -24,9 +21,7 @@ const useStyles = makeStyles(() =>
 
 const About = (props) => {
   const classes = useStyles();
-  // const dispatch = useDispatch();
   const navigate = useNavigate();
-
   function goBackHome() {
     navigate("/");
   }
@@ -46,34 +41,7 @@ const About = (props) => {
         ホームに戻る
       </Button>
 
-      {/* <Button onClick={() => dispatch(push("/"))}>ホームに戻る</Button> */}
     </div>
   );
 };
-
-const mapStateToProps = (state) => {
-  return { count: state.count };
-};
-
-export default connect(mapStateToProps)(About);
-
-
-
-// import React from "react";
-// import { useSelector } from "react-redux";
-
-// function About() {
-// const count = useSelector((state) => state.countReducer.count);
-// const posts = useSelector((state) => state.postsReducer.posts);
-// return (
-//   <>
-//     <div>Countコンポーネント:{count}</div>
-//     <ul>
-//       {posts.map((post) => (
-//         <li key={post.id}>{post.title}</li>
-//       ))}
-//     </ul>
-//   </>
-// );
-// }
-// export default About;
+export default About;

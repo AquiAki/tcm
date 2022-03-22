@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
-import { Card } from "./index";
 import { useNavigate } from "react-router-dom";
-import { Lung, Cards } from "./index";
 import lung from "/Users/akii/Desktop/tcm/src/assets/肺経.jpg";
 import largeIntestine from "/Users/akii/Desktop/tcm/src/assets/大腸.jpg";
 import stomach from "/Users/akii/Desktop/tcm/src/assets/胃経.jpg";
@@ -18,8 +16,6 @@ import gallbladder from "/Users/akii/Desktop/tcm/src/assets/胆.jpg";
 import liver from "/Users/akii/Desktop/tcm/src/assets/肝.jpg";
 import governor from "/Users/akii/Desktop/tcm/src/assets/督脈.jpg";
 import conceptionVessel from "/Users/akii/Desktop/tcm/src/assets/任脈.jpg";
-
-
 import ImageList from "@material-ui/core/ImageList";
 import ImageListItem from "@material-ui/core/ImageListItem";
 
@@ -83,9 +79,6 @@ const itemData = [
   },
 ];
 
-
-
-
 const useStyles = makeStyles(() =>
   createStyles({
     button: {
@@ -105,29 +98,8 @@ const Acupoints = (props) => {
   const classes = useStyles();
   const navigate = useNavigate();
   const [acuName, setAcName] = useState("")
-  const [open, setOpen] = useState(false);
 
-  // const images = [
-  //   {
-  //     image: lung,
-  //     value: "/lung",
-  //     id: "lung",
-  //   },
-  //   {
-  //     image: largeIntestine,
-  //     value: "/contact",
-  //     id: "largeIntestine",
-  //   },
-  //   {
-  //     image: stomach,
-  //     value: "/about",
-  //     id: "stomach",
-  //   },
-  // ];
-
-  function checkComponent(i) {
-    // setOpen(true)
-    
+  function checkComponent(i) {    
     switch (i) {
       case "lung":
         
@@ -142,37 +114,37 @@ const Acupoints = (props) => {
         navigate("/stomach");
         break;
       case "spleen":
-        navigate("/stomach");
+        navigate("/spleen");
         break;
       case "heart":
-        navigate("/stomach");
+        navigate("/heart");
         break;
       case "smallintestine":
-        navigate("/stomach");
+        navigate("/smallintestine");
         break;
       case "bladder":
-        navigate("/stomach");
+        navigate("/bladder");
         break;
       case "kidney":
-        navigate("/stomach");
+        navigate("/kidney");
         break;
       case "pericardium":
-        navigate("/stomach");
+        navigate("/pericardium");
         break;
       case "tripleEnergizer":
-        navigate("/stomach");
+        navigate("/tripleenergizer");
         break;
       case "gallbladder":
-        navigate("/stomach");
+        navigate("/gallbladder");
         break;
       case "liver":
-        navigate("/stomach");
+        navigate("/liver");
         break;
       case "governor":
-        navigate("/stomach");
+        navigate("/governor");
         break;
       case "conceptionVessel":
-        navigate("/stomach");
+        navigate("/conceptionvessel");
         break;
 
       default:
@@ -190,7 +162,6 @@ const Acupoints = (props) => {
 
   return (
     <div className="home">
-    {/* {!open && <Lung acName={acuName} />} */}
       <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
         {itemData.map((item, index) => (
           <ImageListItem key={item.img}>
@@ -206,18 +177,6 @@ const Acupoints = (props) => {
           </ImageListItem>
         ))}
       </ImageList>
-
-      {/* {open && <Lung title={title} />} */}
-
-      {/* {images.map((image, index) => (
-        <button
-          id={image.id}
-          key={index}
-          onClick={() => checkComponent(image.id)}
-        >
-          <img src={image.image} key={index} alt={""} />
-        </button>
-      ))} */}
     </div>
   );
 };

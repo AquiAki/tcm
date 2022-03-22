@@ -7,12 +7,12 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { CardActionArea } from "@material-ui/core";
 
-const Stomach = (props) => {
-  const stomachData = defaultDataset.stomach;
+const Spleen = (props) => {
+  const spleenData = defaultDataset.spleen;
 
   return (
     <>
-      {stomachData.map((datas) => (
+      {spleenData.map((datas) => (
         <Card sx={{ maxWidth: 345 }}>
           <CardActionArea>
             {/* <CardMedia
@@ -42,4 +42,4 @@ const Stomach = (props) => {
   );
 };
 
-export default Stomach;
+export default Spleen;

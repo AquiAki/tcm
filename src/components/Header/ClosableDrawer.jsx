@@ -1,5 +1,4 @@
 import React, {useCallback, useState, useEffect} from 'react';
-import { Provider } from "react-redux";
 import { Divider } from '@material-ui/core';
 import { Drawer } from '@material-ui/core';
 import { List } from '@material-ui/core';
@@ -9,28 +8,14 @@ import { ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import { IconButton } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
-import { AddCircle } from '@material-ui/icons';
-import { History } from '@material-ui/icons';
 import TextInput from './TextInput';
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import HomeIcon from "@material-ui/icons/Home";
 import { useDispatch } from "react-redux";
-import { push } from 'connected-react-router';
 import data from "/Users/akii/Desktop/tcm/src/dataset.js";
-import { Popup } from "/Users/akii/Desktop/tcm/src/components/index.js";
-
-import {
-  NavLink,
-  BrowserRouter,
-  Route,
-  Routes,
-  Switch,
-  Link,
-  useNavigate
-} from "react-router-dom";
 
 
-
+import {  useNavigate} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme)=>({
@@ -54,8 +39,6 @@ const useStyles = makeStyles((theme)=>({
 const ClosableDrawer = (props) =>{
   const classes = useStyles()
   const {container} = props;
-  const dispatch = useDispatch();
-  const [path, setPath] = useState("");
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false)
 
@@ -69,14 +52,39 @@ const ClosableDrawer = (props) =>{
   },[setKeyword]);
 
   
+
+
+const dataList = {
+  ちょうふ: {
+    content: "ちゅうふ",
+    place: "雲門穴の下1寸、華蓋穴の外方6寸",
+    point: "肺経の募穴",
+    muscle: "大胸筋、小胸筋",
+    nerve: "運動神経 : 胸筋神経",
+  },
+  うんもん: {
+    content: "うんもん",
+    place: "雲門",
+    point: "肺経の",
+    muscle: "大胸筋",
+    nerve: " : 胸",
+  },
+};
+
+
+
+
+
   const click = (event)=>{
     setIsOpen(true);
-
+    
     const new_search = data[keyword];
     setSearchWord(new_search);
+
     navigate("/search");
     props.onClose(event);
     props.searchInput(true, searchWord);
+    
   }
 
 
@@ -195,26 +203,6 @@ useEffect(() => {
             </div>
             <Divider />
 
-            {/* <div>
-            <ul>
-              <li>
-                <NavLink to="/" onClick={(e) => props.onClose(e)}>
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/about" onClick={(e) => props.onClose(e)}>
-                  About
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/contact" onClick={(e) => props.onClose(e)}>
-                  Contact
-                </NavLink>
-              </li>
-            </ul>
-          </div> */}
-
             <List>
               {menus.map((menu) => (
                 <ListItem
@@ -226,13 +214,6 @@ useEffect(() => {
                   <ListItemText primary={menu.label} />
                 </ListItem>
               ))}
-              {/* 
-            <ListItem button key="logout" onClick={() => getText()}>
-              <ListItemIcon>
-                <FiberManualRecordIcon />
-              </ListItemIcon>
-              <ListItemText primary={"経穴"} />
-            </ListItem> */}
             </List>
           </div>
         </Drawer>

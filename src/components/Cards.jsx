@@ -38,6 +38,7 @@ const Cards = (props) => {
     // }
   }
 
+
   return (
 
     <div className="lung">
@@ -60,19 +61,6 @@ const Cards = (props) => {
         );
       })}
     </div>
-
-    // <div>
-    //   {props.initData.map((datas, index) => {
-    //     return (
-    //       <Card
-    //         text={datas.content}
-    //         id={datas.nextId}
-    //         key={index.toString()}
-    //         change={props.change}
-    //       />
-    //     );
-    //   })}
-    // </div>
   );
 };
 

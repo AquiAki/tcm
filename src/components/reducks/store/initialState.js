@@ -3,7 +3,7 @@ const initialState = {
     icon: "",
     isSignedIn: false,
     uid: "",
-    username: "",
+    username: "初期値",
   },
 };
 

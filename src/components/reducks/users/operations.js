@@ -1,6 +1,8 @@
 import { signInAction } from "./actions";
 import { push } from "connected-react-router";
 
+import { useNavigate } from "react-router-dom";
+
 export const signIn = () => {
   // この関数はすぐにreturnする。このコールバック関数はasyncがついているので、中でawaitを使うことができる
   // 第一引数dispatchは、Actionsを呼び出す
@@ -23,7 +25,7 @@ export const signIn = () => {
         signInAction({
           isSignedIn: true,
           uid: "0001",
-          username: username,
+          username: "変更された",
         })
       );
       dispatch(push("/"));
@@ -32,3 +34,20 @@ export const signIn = () => {
 };
 
 
+export const signOut = ()=>{
+  return (dispatch, getState) => {
+    const state = getState();
+    const isSignedIn = state.users.isSignedIn;
+  
+
+ dispatch(
+   signInAction({
+     isSignedIn: true,
+     uid: "0001",
+   })
+ );
+
+ dispatch(push("/contact"));
+ 
+  };
+}

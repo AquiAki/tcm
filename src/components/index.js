@@ -1,7 +1,5 @@
 export { default as Header } from "./Header/Header";
 export { default as Footer } from "./Footer";
-export { default as Cards } from "./Cards";
-export { default as Card } from "./Card";
 export { default as List } from "./List";
 export { default as Lists } from "./Lists";
 export { default as About } from "./About";
@@ -14,4 +12,7 @@ export { default as Tcm } from "./Tcm";
 export { default as Theory } from "./Theory";
 export { default as LargeIntestine } from "./LargeIntestine";
 export { default as Stomach } from "./Stomach";
+export { default as Spleen } from "./Spleen";
 export { default as Popup } from "./Popup";
+export { default as Nocontent } from "./Nocontent";
+export { default as Point } from "./Point";
