@@ -58,8 +58,8 @@ const Lung = (props) => {
         </Table>
       </TableContainer> */}
 
-      {lungData.map((datas) => (
-        <Card sx={{ maxWidth: 345 }}>
+      {lungData.map((datas, index) => (
+        <Card sx={{ maxWidth: 345 }} key={index.toString()}>
           <CardActionArea>
             {/* <CardMedia
               component="img"
@@ -70,7 +70,7 @@ const Lung = (props) => {
               <Typography gutterBottom variant="h5" component="div">
                 {datas.content}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2">
                 {datas.place}
                 <br />
                 {datas.point}

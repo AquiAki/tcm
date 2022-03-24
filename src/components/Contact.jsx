@@ -30,7 +30,7 @@ const Contact = (props) => {
 
   return (
     <div className="container">
-      <h1>お問い合わせ</h1>
+      <h3>お問い合わせ</h3>
       <form
         action="https://getform.io/f/5cec1d8c-0126-4176-9704-fb51528720bb"
         method="POST"

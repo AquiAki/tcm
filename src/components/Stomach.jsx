@@ -12,8 +12,8 @@ const Stomach = (props) => {
 
   return (
     <>
-      {stomachData.map((datas) => (
-        <Card sx={{ maxWidth: 345 }}>
+      {stomachData.map((datas, index) => (
+        <Card key={index.toString()}  sx={{ maxWidth: 345 }}>
           <CardActionArea>
             {/* <CardMedia
               component="img"
@@ -24,7 +24,7 @@ const Stomach = (props) => {
               <Typography gutterBottom variant="h5" component="div">
                 {datas.content}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" >
                 {datas.place}
                 <br />
                 {datas.point}

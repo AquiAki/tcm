@@ -42,7 +42,6 @@ const Router = () => {
 
   function checkSearch(i, searchWord) {
     setSearchText(searchWord);
-    console.log(searchText);
   }
 
 

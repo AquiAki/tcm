@@ -54,8 +54,8 @@ const LargeIntestine = (props) => {
 
   return (
     <>
-      {largeintestineData.map((datas) => (
-        <Card sx={{ maxWidth: 345 }}>
+      {largeintestineData.map((datas,index) => (
+        <Card key={index.toString()} sx={{ maxWidth: 345 }}>
           <CardActionArea>
             {/* <CardMedia
               component="img"
@@ -66,7 +66,7 @@ const LargeIntestine = (props) => {
               <Typography gutterBottom variant="h5" component="div">
                 {datas.content}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" >
                 {datas.place}
                 <br />
                 {datas.point}
