@@ -728,6 +728,13 @@ const defaultDataset = {
     nerve: "運動神経 : 胸筋神経",
   },
 
+  うんもん: {
+    place: "雲門",
+    point: "あだ",
+    muscle: "大胸",
+    nerve: "運動神経 : あだ胸筋神経",
+  },
+
   tcm: [
     { content: "東洋医学の特徴", nextId: "features" },
     { content: "生理と病理", nextId: "pathology" },

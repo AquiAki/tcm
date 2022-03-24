@@ -14,6 +14,8 @@ const bull = (
 
 export default function Popup(props) {
 
+
+
   return (
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
@@ -23,7 +25,7 @@ export default function Popup(props) {
           </Typography>
           <Typography sx={{ mb: 1.5 }}>{props.point}</Typography>
           <Typography variant="body2">
-            {props.muscle}
+            {props.infos}
             <br />
             {props.nerve}
 

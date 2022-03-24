@@ -1,4 +1,4 @@
-import React, {useCallback, useState, useEffect} from 'react';
+import React, {useCallback, useState} from 'react';
 import { Divider } from '@material-ui/core';
 import { Drawer } from '@material-ui/core';
 import { List } from '@material-ui/core';
@@ -11,11 +11,11 @@ import { Search } from '@material-ui/icons';
 import TextInput from './TextInput';
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import HomeIcon from "@material-ui/icons/Home";
-import { useDispatch } from "react-redux";
 import data from "/Users/akii/Desktop/tcm/src/dataset.js";
-
-
-import {  useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 
 
 const useStyles = makeStyles((theme)=>({
@@ -41,52 +41,28 @@ const ClosableDrawer = (props) =>{
   const {container} = props;
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false)
-
   const [searchWord, setSearchWord] = useState("")
-
   const [keyword, setKeyword] = useState("");
 
-
   const inputKeyword = useCallback((event)=>{ 
-    setKeyword(event.target.value) 
+    setKeyword(event.target.value);
   },[setKeyword]);
-
-  
-
-
-const dataList = {
-  ちょうふ: {
-    content: "ちゅうふ",
-    place: "雲門穴の下1寸、華蓋穴の外方6寸",
-    point: "肺経の募穴",
-    muscle: "大胸筋、小胸筋",
-    nerve: "運動神経 : 胸筋神経",
-  },
-  うんもん: {
-    content: "うんもん",
-    place: "雲門",
-    point: "肺経の",
-    muscle: "大胸筋",
-    nerve: " : 胸",
-  },
-};
-
-
-
-
 
   const click = (event)=>{
     setIsOpen(true);
-    
-    const new_search = data[keyword];
-    setSearchWord(new_search);
-
-    navigate("/search");
-    props.onClose(event);
-    props.searchInput(true, searchWord);
-    
+    if (keyword in data) {
+      const word = data[keyword];
+      setSearchWord(word);
+      // navigate("/search");
+      event.target.value = "";
+      props.onClose(event);
+      setKeyword("");
+    }else{
+     alert("検索できませんでした\n ひらがなで正しく検索してください \n");
+     setKeyword("");
+     setIsOpen(false)
+    }
   }
-
 
   const selectMenu = (event, path) => {
     if (path === "/") {
@@ -168,10 +144,9 @@ const dataList = {
     // },
   ];
 
-useEffect(() => {
-  props.searchInput(true, searchWord);
-}, [isOpen, searchWord]);
-
+const closeSearch = ()=>{
+  setIsOpen(false);
+}
 
   return (
     <div>
@@ -218,6 +193,25 @@ useEffect(() => {
           </div>
         </Drawer>
       </nav>
+      {isOpen && (
+        <div>
+        <button onClick={closeSearch}>×</button>
+          <Card sx={{ minWidth: 275 }}>
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} gutterBottom></Typography>
+              <Typography variant="h5" component="div">
+                
+              </Typography>
+              <Typography sx={{ mb: 1.5 }}>{searchWord.point}</Typography>
+              <Typography variant="body2">
+                {searchWord.muscle}
+                <br />
+                {searchWord.nerve}
+              </Typography>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 };

@@ -7,8 +7,9 @@ import { useNavigate } from "react-router-dom";
 const useStyles = makeStyles(() =>
   createStyles({
     button: {
+      alignItems: "center",
       borderColor: "#FFB549",
-      color: "red",
+      color: "brown",
       fontWeight: 600,
       marginBottom: "8px",
       "&:hover": {
@@ -28,19 +29,16 @@ const About = (props) => {
 
 
   return (
-    <div className="about">
-      <h1>このサイトについて</h1>
+    <div>
+      <h3 className="about">このサイトについて</h3>
       <p>
-        こんにちは。
+        鍼灸の学生や鍼灸師に向けて作ったサイトです
         <br />
-        このサイトは鍼灸の学生や鍼灸師に向けて作ったサイトです。
-        <br />
-        学校の勉強や復習の役に立てば幸いです。
+        学校の勉強や復習の役に立てば幸いです
       </p>
       <Button className={classes.button} onClick={goBackHome}>
         ホームに戻る
       </Button>
-
     </div>
   );
 };
