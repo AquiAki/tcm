@@ -5,10 +5,11 @@ import {  useNavigate } from "react-router-dom";
 import acupoints  from "/Users/akii/Desktop/tcm/src/assets/経絡経穴.jpg";
 import yinyang from "/Users/akii/Desktop/tcm/src/assets/東洋医学.jpg";
 import theory from "/Users/akii/Desktop/tcm/src/assets/理論と臨床.jpg";
-
+import AccessibilityNewIcon from "@material-ui/icons/AccessibilityNew";
 
 import ImageList from "@material-ui/core/ImageList";
 import ImageListItem from "@material-ui/core/ImageListItem";
+
 
 
 const itemData = [
@@ -43,6 +44,9 @@ const useStyles = makeStyles(() =>
   })
 );
 
+
+
+
 const Home = (props) => {
   const classes = useStyles();
   const navigate = useNavigate();
@@ -61,22 +65,77 @@ const Home = (props) => {
       default:
     }
   }
+
+  const messageList = [
+    "調子はどう?",
+    "今日は何を勉強する?",
+    "東洋医学って楽しいよね",
+    "勉強がんばってね!",
+    "更新を楽しみにしててね",
+    "気になることがあったら気軽に問い合わせてね",
+  ];
+
+  const [open, setOpen] = useState(false)
+  const randomInt = Math.floor(Math.random() * messageList.length);
+  const click = () =>{
+    setOpen(true);
+  }
+
+
+
+
+
     return (
-      <div className="home">
-        <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+      <div>
+        <div className="intro">
+          <h2>Next鍼灸へようこそ</h2>
+          <p>東洋医学をわかりやすく、もっと身近に</p>
+          <AccessibilityNewIcon onClick={click} />
+          {open && <p style={{ color: "gray" }}>{messageList[randomInt]}</p>}
+        </div>
+
+        <ImageList sx={{ width: 500, height: 500 }} cols={3} rowHeight={164}>
           {itemData.map((item) => (
-            <ImageListItem key={item.img}>
+            <ImageListItem key={item.img} className="homeImage">
               <img
                 src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
                 srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                 alt={item.title}
                 loading="lazy"
-                className="home-image"
                 onClick={() => checkComponent(item.title)}
               />
             </ImageListItem>
           ))}
         </ImageList>
+
+        <div>
+          <ul className="news-list">
+            {/* <li className="item">
+              <a href="/">
+                <p className="date">2022/3/15</p>
+                <p className="title">Next鍼灸がスタートしました</p>
+              </a>
+            </li> */}
+            <li className="item">
+              <a href="/lung">
+                <p className="date">2022/3/24</p>
+                <p className="title">経絡経穴の肺経を更新しました</p>
+              </a>
+            </li>
+            <li className="item">
+              <a href="/largeintestine">
+                <p className="date">2022/3/25</p>
+                <p className="title">経絡経穴の大腸経を更新しました</p>
+              </a>
+            </li>
+            <li className="item">
+              <a href="/stomach">
+                <p className="date">2022/3/26</p>
+                <p className="title">経絡経穴の胃経を更新しました</p>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     );
 };

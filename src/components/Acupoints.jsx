@@ -144,13 +144,11 @@ const Acupoints = (props) => {
         navigate("/governor");
         break;
       case "conceptionVessel":
-        navigate("/conceptionvessel");
+        navigate("/conception");
         break;
 
       default:
     }
-
-
     
   }
 
@@ -161,7 +159,7 @@ const Acupoints = (props) => {
 
 
   return (
-    <div className="home">
+    <div className="acupoints">
       <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
         {itemData.map((item, index) => (
           <ImageListItem key={item.img}>

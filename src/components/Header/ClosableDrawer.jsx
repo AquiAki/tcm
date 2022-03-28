@@ -16,6 +16,9 @@ import {useNavigate} from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import CloseIcon from "@material-ui/icons/Close";
+
+import ちゅうふ from "/Users/akii/Desktop/tcm/src/assets/陰陽.png";
 
 
 const useStyles = makeStyles((theme)=>({
@@ -48,6 +51,13 @@ const ClosableDrawer = (props) =>{
     setKeyword(event.target.value);
   },[setKeyword]);
 
+  const pressEnter = (event) =>{
+    console.log("aaa");
+    if (event.key === "Enter"){
+      console.log("click");
+    }
+  }
+
   const click = (event)=>{
     setIsOpen(true);
     if (keyword in data) {
@@ -58,9 +68,10 @@ const ClosableDrawer = (props) =>{
       props.onClose(event);
       setKeyword("");
     }else{
-     alert("検索できませんでした\n ひらがなで正しく検索してください \n");
+    //  alert("正確にひらがなで検索してください \n");
      setKeyword("");
-     setIsOpen(false)
+     setIsOpen(false);
+    //  props.onClose(event);
     }
   }
 
@@ -195,18 +206,26 @@ const closeSearch = ()=>{
       </nav>
       {isOpen && (
         <div>
-        <button onClick={closeSearch}>×</button>
+          <CloseIcon onClick={closeSearch} />
+          <img src={keyword} alt="" />
           <Card sx={{ minWidth: 275 }}>
             <CardContent>
-              <Typography sx={{ fontSize: 14 }} gutterBottom></Typography>
+              <Typography sx={{ fontSize: 14 }} gutterBottom>
+                {searchWord.route}
+              </Typography>
               <Typography variant="h5" component="div">
-                
+                {searchWord.content}
               </Typography>
               <Typography sx={{ mb: 1.5 }}>{searchWord.point}</Typography>
               <Typography variant="body2">
-                {searchWord.muscle}
                 <br />
-                {searchWord.nerve}
+                【部位】: {searchWord.place}
+                <br />
+                【筋肉】: {searchWord.muscle}
+                <br />
+                【運動神経】: {searchWord.nerveMotorius}
+                <br />
+                【知覚神経】: {searchWord.nerveSensorius}
               </Typography>
             </CardContent>
           </Card>

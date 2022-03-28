@@ -21,13 +21,13 @@ export default function Popup(props) {
         <CardContent>
           <Typography sx={{ fontSize: 14 }} gutterBottom></Typography>
           <Typography variant="h5" component="div">
-            {props.content}
+            aaadad
           </Typography>
           <Typography sx={{ mb: 1.5 }}>{props.point}</Typography>
           <Typography variant="body2">
-            {props.infos}
+
             <br />
-            {props.nerve}
+
 
           </Typography>
         </CardContent>
