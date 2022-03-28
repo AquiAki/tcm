@@ -54,7 +54,7 @@ const LargeIntestine = (props) => {
 
   return (
     <>
-      {largeintestineData.map((datas,index) => (
+      {largeintestineData.map((datas, index) => (
         <Card key={index.toString()} sx={{ maxWidth: 345 }}>
           <CardActionArea>
             {/* <CardMedia
@@ -66,14 +66,18 @@ const LargeIntestine = (props) => {
               <Typography gutterBottom variant="h5" component="div">
                 {datas.content}
               </Typography>
-              <Typography variant="body2" >
-                {datas.place}
-                <br />
+              <Typography style={{ color: "#0d6efd" }}>
                 {datas.point}
+              </Typography>
+              <Typography variant="body2">
                 <br />
-                {datas.muscle}
+                【部位】 {datas.place}
                 <br />
-                {datas.nerve}
+                【筋肉】 {datas.muscle}
+                <br />
+                【運動神経】 {datas.nerveMotorius}
+                <br />
+                【知覚神経】 {datas.nerveSensorius}
                 <br />
               </Typography>
             </CardContent>

@@ -40,9 +40,8 @@ class ErrorBoundary extends React.Component {
 ReactDOM.render(
   <Provider store={store}>
     {/* <ConnectedRouter history={history}> */}
-    
     {/* <ErrorBoundary> */}
-      <App />
+    <App />
     {/* </ErrorBoundary> */}
     {/* </ConnectedRouter>  */}
   </Provider>,

@@ -1,18 +1,16 @@
 import defaultDataset from "../dataset";
-import React, { useState } from "react";
-
+import React from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { CardActionArea } from "@material-ui/core";
 
-const Stomach = (props) => {
-  const stomachData = defaultDataset.stomach;
+const Conception = (props) => {
+  const conceptionData = defaultDataset.conception;
 
   return (
     <>
-      {stomachData.map((datas, index) => (
+      {conceptionData.map((datas, index) => (
         <Card key={index.toString()} sx={{ maxWidth: 345 }}>
           <CardActionArea>
             {/* <CardMedia
@@ -46,4 +44,4 @@ const Stomach = (props) => {
   );
 };
 
-export default Stomach;
+export default Conception;

@@ -1,11 +1,12 @@
+/* App */
 .wholeBody{
-    /* position: relative; */
     text-align: center;
-    width: 100%;
+    /* width: 100%; */
     padding-top: 120px;
 }
 
 
+/* Header */
 header {
  background-color: black;
   margin: auto -16px;
@@ -15,17 +16,98 @@ header {
 }
 
 .webtitle{
-    color:rgb(0, 195, 255);
+    color:#6fbfe4;
 }
 
+/* Footer */
 footer {
   color: rgb(109, 109, 109);
   text-align: center;
 }
 
+/* About */
 .about {
     text-align: center;
 }
+
+/* Home */
+.intro{
+    color: rgb(255, 254, 254);
+    background-color: #6fbfe4;
+    padding: 30px;
+    margin-bottom: 10px;
+}
+.homeImage{
+ /* background-color: rgba(34, 1, 1, 0.345); */
+}
+
+
+
+/* homeのお知らせ */
+.news-list{
+
+  list-style: none outside;
+  margin: 30;
+  padding: 0;
+  background-color: #6fbfe4;
+}
+.news-list .item a{
+  display: flex;
+  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #CCC;
+  padding: 20px 20px;
+}
+.news-list .item:first-child a{
+  border-top: 1px solid #CCC;
+}
+.news-list .item .date{
+  margin: 0;
+  min-width: 120px;
+  font-size: 16px;
+  color: #999;
+  padding: 0 20px 0 0;
+}
+.news-list .item .title{
+  margin: 0;
+  width: 100%;
+}
+/* .news-list .item a:hover .title{
+  color: #00F;
+} */
+
+@media screen and (max-width: 767px){
+.news-list .item a{
+  flex-wrap: wrap;
+}
+.news-list .item .date{
+  min-width: 100px;
+}
+.news-list .item .title{
+  margin-top: 10px;
+}
+}
+
+/* 装飾 */
+*{
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+body{
+  margin: 20px;
+}
+
+
+
+/* acupoints */
+.acupoints{
+    background-color: rgb(240, 240, 240);
+}
+
 
 
 /* ここからはコンタクトフォーム */
